@@ -15,9 +15,10 @@ import { MatListModule } from "@angular/material/list";
 import { AppRoutingModule } from "./app-routing.module";
 
 import { AppComponent } from "./app.component";
+import { ItemListComponent } from './item-list/item-list.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ItemListComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
