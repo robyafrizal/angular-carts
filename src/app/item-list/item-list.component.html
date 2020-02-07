@@ -27,7 +27,12 @@
           {{ item.desc }}
         </p></mat-card-content
       ><mat-card-actions class="right-button mat-card-actions"
-        ><button mat-button="" class="mat-button mat-button-base">
+        ><button
+          mat-button=""
+          class="mat-button mat-button-base"
+          (click)="addToCart(i)"
+          [disabled]="item.isAdded === true"
+        >
           <span class="mat-button-wrapper"
             ><mat-icon
               class="mat-icon notranslate material-icons mat-icon-no-color"

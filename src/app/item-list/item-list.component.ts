@@ -7,9 +7,16 @@ import { Component, OnInit } from "@angular/core";
 })
 export class ItemListComponent implements OnInit {
   items: any;
+  cartItems: any;
   constructor() {}
 
   ngOnInit() {
+    let data = localStorage.getItem("cart");
+    if (data !== null) {
+      this.cartItems = JSON.parse(data);
+    } else {
+      this.cartItems = [];
+    }
     this.items = [
       {
         name: "Kokorowatari",
@@ -67,5 +74,20 @@ export class ItemListComponent implements OnInit {
         The Dragon Slayer is the massive sword Guts has wielded as his signature weapon since surviving the Eclipse.`
       }
     ];
+  }
+  addToCart(index) {
+    let item = this.items[index];
+    let cartData = [];
+    let data = localStorage.getItem("cart");
+    if (data !== null) {
+      cartData = JSON.parse(data);
+    }
+    cartData.push(item);
+    this.updateCartData(cartData);
+    localStorage.setItem("cart", JSON.stringify(cartData));
+    this.items[index].isAdded = true;
+  }
+  updateCartData(cartData) {
+    this.cartItems = cartData;
   }
 }
