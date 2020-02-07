@@ -16,9 +16,10 @@ import { AppRoutingModule } from "./app-routing.module";
 
 import { AppComponent } from "./app.component";
 import { ItemListComponent } from './item-list/item-list.component';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
-  declarations: [AppComponent, ItemListComponent],
+  declarations: [AppComponent, ItemListComponent, CartComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
