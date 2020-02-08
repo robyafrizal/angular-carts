@@ -1,50 +1,71 @@
-<h1 class="mat-h1 main-title">[NPC] Beginner Merchant</h1>
-<h3 class="mat-h3 test-description">
-  Hello Adventurer, welcome to the town of Angular! <br />Here you can explore
-  all the exciting stuff like meeting weird monster, learning new spell, and
-  discovering rare item. <br />But first, you need some weapon/spell to
-  accompany you along the way! <br />I will give you 1000 gold, so choose your
-  weapon/spell wisely~
-</h3>
-<div class="card-wrapper">
-  <div *ngFor="let item of items">
-    <mat-card class="item-card mat-card"
-      ><mat-card-header class="mat-card-header"
+<div class="container">
+  <h1 class="mat-h1 main-title">[NPC] Beginner Merchant</h1>
+  <h3 class="mat-h3 test-description">
+    Hello Adventurer, welcome to the town of Angular! <br />Here you can explore
+    all the exciting stuff like meeting weird monster, learning new spell, and
+    discovering rare item. <br />But first, you need some weapon/spell to
+    accompany you along the way! <br />I will give you 1000 gold, so choose your
+    weapon/spell wisely~
+  </h3>
+  <div class="card-wrapper">
+    <mat-card class="item-card" *ngFor="let item of items"
+      ><mat-card-header
         ><div class="mat-card-header-text">
-          <mat-card-title class="mat-card-title" *ngIf="item">{{
-            item.name
-          }}</mat-card-title
-          ><mat-card-subtitle class="mat-card-subtitle" *ngIf="item">{{
-            item.price
-          }}</mat-card-subtitle>
+          <mat-card-title>{{ item.name }}</mat-card-title
+          ><mat-card-subtitle>{{ item.price }}</mat-card-subtitle>
         </div></mat-card-header
       >
       <div class="img-wrapper">
         <img class="mat-card-image" src="{{ item.image }}" />
       </div>
-      <mat-card-content class="mat-card-content"
+      <mat-card-content
         ><p>
           {{ item.desc }}
         </p></mat-card-content
-      ><mat-card-actions class="right-button mat-card-actions"
+      ><mat-card-actions class="right-button"
         ><button
           mat-button=""
-          class="mat-button mat-button-base"
-          (click)="addToCart(i)"
-          [disabled]="item.isAdded === true"
+          *ngIf="!item.addedToCart"
+          (click)="addToCart(item)"
         >
-          <span class="mat-button-wrapper"
-            ><mat-icon
-              class="mat-icon notranslate material-icons mat-icon-no-color"
-              role="img"
-              aria-hidden="true"
-              >add_shopping_cart</mat-icon
-            >
-            {{ addedToCart }}
-          </span>
-          <div class="mat-button-ripple mat-ripple"></div>
-          <div class="mat-button-focus-overlay"></div>
-        </button> </mat-card-actions
-    ></mat-card>
+          <mat-icon>add_shopping_cart</mat-icon>Add to Cart
+        </button>
+        <button
+          mat-button=""
+          color="primary"
+          *ngIf="item.addedToCart"
+          (click)="removeFromCart(item)"
+        >
+          <mat-icon>shopping_cart</mat-icon>
+          Added to cart
+        </button>
+      </mat-card-actions></mat-card
+    >
+    <mat-divider></mat-divider>
+  </div>
+</div>
+
+<div class="items-cart">
+  <h3>Added to cart:</h3>
+  <ng-container *ngFor="let item of items">
+    <div class="item-cart-list" *ngIf="item.addedToCart">
+      <span class="cart-item-name">{{ item.name }}</span>
+      <span class="cart-item-price">{{ item.price }}</span>
+    </div>
+  </ng-container>
+  <mat-divider></mat-divider>
+  <div class="item-cart-list">
+    <span class="cart-item-name"><strong>Total: </strong></span
+    ><span class="cart-item-price">{{ totalCost }}</span>
+  </div>
+  <div style="width: 100%;">
+    <button
+      color="primary"
+      mat-raised-button=""
+      style="width: 100%;"
+      (click)="showAlertMessage()"
+    >
+      Buy
+    </button>
   </div>
 </div>
