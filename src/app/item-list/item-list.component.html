@@ -43,29 +43,29 @@
     >
     <mat-divider></mat-divider>
   </div>
-</div>
 
-<div class="items-cart">
-  <h3>Added to cart:</h3>
-  <ng-container *ngFor="let item of items">
-    <div class="item-cart-list" *ngIf="item.addedToCart">
-      <span class="cart-item-name">{{ item.name }}</span>
-      <span class="cart-item-price">{{ item.price }}</span>
+  <div class="items-cart">
+    <h3>Added to cart:</h3>
+    <ng-container *ngFor="let item of items">
+      <div class="item-cart-list" *ngIf="item.addedToCart">
+        <span class="cart-item-name">{{ item.name }}</span>
+        <span class="cart-item-price">{{ item.price }}</span>
+      </div>
+    </ng-container>
+    <mat-divider></mat-divider>
+    <div class="item-cart-list">
+      <span class="cart-item-name"><strong>Total: </strong></span
+      ><span class="cart-item-price">{{ totalCost }}</span>
     </div>
-  </ng-container>
-  <mat-divider></mat-divider>
-  <div class="item-cart-list">
-    <span class="cart-item-name"><strong>Total: </strong></span
-    ><span class="cart-item-price">{{ totalCost }}</span>
-  </div>
-  <div style="width: 100%;">
-    <button
-      color="primary"
-      mat-raised-button=""
-      style="width: 100%;"
-      (click)="showAlertMessage()"
-    >
-      Buy
-    </button>
+    <div style="width: 100%;">
+      <button
+        color="primary"
+        mat-raised-button=""
+        style="width: 100%;"
+        (click)="showAlertMessage()"
+      >
+        Buy
+      </button>
+    </div>
   </div>
 </div>
