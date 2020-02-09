@@ -118,8 +118,13 @@
               "devServerTarget": "angular-carts:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
-    }},
+    }
+  },
   "defaultProject": "angular-carts"
 }
